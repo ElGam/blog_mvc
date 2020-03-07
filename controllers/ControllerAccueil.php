@@ -22,26 +22,6 @@ class ControllerAccueil
     }
   }
 
-  /*private function articles(){
-    $this->_postManager = new PostManager();
-    $posts = $this->_postManager->getPosts();
-    $this->_view = new View('Accueil');
-    $this->_view->generate(array('posts' => $posts));
-    $this->_view = new View('Accueil');
-  }*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  ?>

@@ -7,6 +7,7 @@ class Accueil
 {
   private $_title; 
   private $_description;
+  private $_nom_prenom;
 
   public function __construct(array $data){
     $this->hydrate($data);
@@ -38,6 +39,13 @@ class Accueil
     }
   }
 
+   public function setNom_prenom($nom_prenom)
+  {
+    if (is_string($nom_prenom)) {
+      $this->_nom_prenom = $nom_prenom;
+    }
+  }
+    
 
   //GETTERS
   public function title()
@@ -49,10 +57,14 @@ class Accueil
   {
     return $this->_description;
   }
+
+
+
+  public function nom_prenom()
+  {
+    return $this->_nom_prenom;
+  }
 }
-
-
-
 
 
 
