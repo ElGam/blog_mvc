@@ -71,28 +71,23 @@
 				</div><!-- col-lg-4 col-md-6 -->
                 
                 
-                <section id="contactez-nous"><center>
-				<div class="col-lg-4 col-md-6" style="border:1px solid black;">
-					<div class="footer-section2">
+<div class="col-lg-4 col-md-6">
+					<div class="footer-section">
 
-						<h4 class="title"><b>CONTACTEZ-NOUS</b></h4>
-						<form>
-                        <div class="input-area">
-                                <input style="width:98%;" id="nom_prenom" placeholder="NOM et Prénom">
-                        </div>
-                        <div class="input-area">
-                                <input style="width:98%;" id="email" type="email" placeholder="Entrez votre email">
-                                
-                        </div><br>
-                            <input type="hidden" name="formulaire" value="true">
-                                <textarea placeholder="Entrez votre message" id="message" class="form-group" cols="150" style="resize:none;width:98%" ></textarea>
-								<button class="submit-btn" id="contactButton" type="button">Envoyer</button> <br>
-							</form>
-				
+						<h4 class="title"><b>Contactez-Nous</b></h4>
+						<form method="post" action="Accueil">
+							
+								<input class="text-input" name="nom_prenom" type="text" placeholder="NOM et Prénom"><br><br>
+							
+								<input class="email-input" name="email" type="text" placeholder="E-mail"><br><br>
+							
+                            <textarea name="message" placeholder="Message..." cols="40"></textarea><br><br>
+                            <button class="submit-btn" type="submit" name="form_button">Envoyer</button>
+                        </form>
 
 					</div><!-- footer-section -->
 				</div><!-- col-lg-4 col-md-6 -->
-</center></section>	
+
 			</div><!-- row -->
 		</div><!-- container -->
 	</footer>

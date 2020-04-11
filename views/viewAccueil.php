@@ -1,16 +1,14 @@
-	<div class="slider"><br><br><br><br>
+	<div class="slider" style="color:white"><br>
         <center>
-            <h1><?= $accueilInfos[0]->title(); ?></h1>
-            <h4><i>Par <?= $accueilInfos[0]->nom_prenom(); ?>, créateur d'innovations digitales !<br></i></h4>
-            <h6><a href="CV_Delos.pdf">Mon CV Téléchargeable</a></h6>
-        
+            <img id="imgProfile" src="about.jpg" style="width:15%; border-radius: 8px;"><br>
+            <i><?= $accueilInfos[0]->title(); ?>, <?= $accueilInfos[0]->nom_prenom(); ?></i><br>
+            <h6><a href="CV_Delos.pdf">Mon CV Téléchargeable</a></h6>     
         </center>
-
     </div><!-- slider -->
 
+
 	<section class="blog-area section">
-        <?= $accueilInfos[0]->description(); ?><br>
-        <img src="avatar.jpg" style="width:40%">
+       <center><?= $form_msg ?></center>
 		<div class="container">
 
 			<div class="row">
