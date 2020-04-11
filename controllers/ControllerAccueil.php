@@ -54,6 +54,10 @@
         $return_msg = "Le champ Nom-Prénom n'est pas renseigné/valide !";
     }
     }
+            else
+            {
+                $return_msg = "";
+            }
 
 
         //VIEW   
