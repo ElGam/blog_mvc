@@ -64,11 +64,7 @@
         $this->_accueilManager = new AccueilManager();
         $accueilInfos = $this->_accueilManager->getAccueilInfos();
         $this->_view = new View('Accueil');
-        $this->_view->generate(array('accueilInfos' => $accueilInfos, 'form_msg' => $return_msg));
-
-
-
-
+        $this->_view->generate(array('accueilTitle' => $accueilInfos[0]->title(), 'accueilNomPrenom' => $accueilInfos[0]->nom_prenom(), 'form_msg' => $return_msg));
 
         }
       }
