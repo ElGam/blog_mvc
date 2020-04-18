@@ -1,10 +1,14 @@
-	<div class="slider"><br><br><br><br>
-        <center><h1><?= $accueilInfos[0]->title(); ?></h1></center>
-
+	<div class="slider" style="color:white"><br>
+        <center>
+            <img id="imgProfile" src="about.jpg" style="width:15%; border-radius: 8px;"><br>
+            <i><?= $accueilTitle; ?>, <?= $accueilNomPrenom; ?></i><br>
+            <h6><a href="CV_Delos.pdf">Mon CV Téléchargeable</a></h6>     
+        </center>
     </div><!-- slider -->
 
+
 	<section class="blog-area section">
-        <?= $accueilInfos[0]->description(); ?>
+       <center><?= $form_msg ?></center>
 		<div class="container">
 
 			<div class="row">
