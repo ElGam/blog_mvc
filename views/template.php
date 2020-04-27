@@ -46,6 +46,7 @@
                 {
                 ?>
                 <li><a href="Connexion">Connexion</a></li>
+                <li><a href="Inscription">Inscription</a></li>
                 <?php
                 }
                 ?>
