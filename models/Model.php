@@ -39,15 +39,51 @@ abstract class Model
     $req->closeCursor();
   } 
    
+
+
+
+
+     protected function getUserInfo($user_id){
+    $this->getBdd();
+    $var = [];
+    $req = self::$_bdd->prepare("SELECT * FROM users WHERE id='".$user_id."'");
+    $req->execute();
+
+    //on crée la variable data qui
+    //va cobntenir les données
+    while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+      // var contiendra les données sous forme d'objets
+      $var[] = new User($data);
+    }
+
+    return $var;
+    $req->closeCursor();
+
+
+  }
+
+
+  protected function checkConnexion($email, $password)
+  {
+      $this->getBdd();
+    $var = [];
+    $req = self::$_bdd->prepare("SELECT * FROM users WHERE email='".$email."' AND password='".$password."'");
+    $req->execute();
+
+    //on crée la variable data qui
+    //va cobntenir les données
+    while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+      // var contiendra les données sous forme d'objets
+      $var[] = new Connexion($data);
+    }
+
+    return $var;
+    $req->closeCursor();
+  }
+
+
+
+
 }
-
-
-
-
-
-
-
-
-
 
  ?>
