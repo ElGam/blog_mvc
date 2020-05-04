@@ -86,14 +86,4 @@ class Inscription
 }
 
 
-
-
-
-
-
-
-
-
-
-
 ?>
