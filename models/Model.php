@@ -61,12 +61,12 @@ abstract class Model
   protected function getOne($table, $obj, $id)
   {
     $this->getBdd();
-    $var = [];
+    //$var = [];
     $req = self::$_bdd->prepare("SELECT id, author, title, chapo, content, DATE_FORMAT(date, '%d/%m/%Y à %Hh%i') AS date FROM " .$table. " WHERE id = ?");
     $req->execute(array($id));
-    while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-      $var[] = new $obj($data);
-    }
+    $data = $req->fetch(PDO::FETCH_ASSOC);
+    $var = new $obj($data);
+    
 
     return $var;
     $req->closeCursor();

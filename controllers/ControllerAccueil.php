@@ -17,7 +17,14 @@ class ControllerAccueil
         }
         else {
 
+            $this->accueil();
 
+        }
+    }
+    
+    private function accueil()
+    {
+        
             //FORMULAIRE DE CONTACT
             if(isset($_POST['form_button']))
             {
@@ -34,9 +41,6 @@ class ControllerAccueil
                             $message = htmlspecialchars($_POST['message']);
 
                             //ENVOI DU MAIL
-
-
-
 
                             $return_msg = "Le message a bien été envoyé !";
                         }
@@ -63,7 +67,6 @@ class ControllerAccueil
 
             //VIEW   
 
-
             $this->_postManager = new PostManager();
             $posts = $this->_postManager->getPosts();
             $this->_accueilManager = new AccueilManager();
@@ -71,11 +74,6 @@ class ControllerAccueil
             $this->_view = new View('Accueil');
             $this->_view->generate(array('accueilInfos' => $accueilInfos, 'form_msg' => $return_msg, 'posts' => $posts));
 
-
-
-
-
-        }
     }
 
 }

@@ -5,18 +5,18 @@
 </div><!-- slider --><br><br>
 
 <center>
-                <h1><b><?=$post[0]->title()?></b></h2>
-                <h5><?=$post[0]->author()?></h3> 
-                <h6>Modifié le <?=$post[0]->date()?></h4><br>
+                <h1><b><?=$post->title()?></b></h2>
+                <h5><?=$post->author()?></h3> 
+                <h6>Modifié le <?=$post->date()?></h4><br>
 </center>
 <div style="text-align: center;">        
 <i>
-                <?=$post[0]->chapo()?>   
+                <?=$post->chapo()?>   
             </i><br>  <br>
               
             <div>
             
-                <?=$post[0]->content()?>
+                <?=$post->content()?>
             </div>
     </div>    
 
