@@ -81,7 +81,7 @@ class ControllerUser
             }
             else
             {
-                $return_msg = "v";
+                $return_msg = "";
                 $form = 1;
                 
                 
