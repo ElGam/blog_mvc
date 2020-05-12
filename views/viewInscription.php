@@ -22,7 +22,7 @@
                     <label for="email">Nom:</label>
                     <input type="text" class="form-control" placeholder="NOM" name="nom" style="width:40%">
 
-                    <label for="email">Nom:</label>
+                    <label for="email">Prénom:</label>
                     <input type="text" class="form-control" placeholder="Prénom" name="prenom" style="width:40%">
 
                     <label for="password">Mot de passe:</label>
