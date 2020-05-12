@@ -124,7 +124,17 @@ abstract class Model
         $req->closeCursor();
     }
 
+    //UPDATE USER
+    protected function updateUserInfos($email, $nom, $prenom, $password, $id)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("UPDATE users SET email='".$email."', prenom='".$prenom."', nom='".$nom."', password='".$password."' WHERE id='".$id."'");
+        $req->execute();
 
+        return "true";
+        $req->closeCursor();
+    }
 
 
 }

@@ -24,6 +24,7 @@ class ControllerAccueil
     
     private function accueil()
     {
+        
             //FORMULAIRE DE CONTACT
             if(isset($_POST['form_button']))
             {
@@ -63,7 +64,9 @@ class ControllerAccueil
                 $return_msg = "";
             }
 
+
             //VIEW   
+
             $this->_postManager = new PostManager();
             $posts = $this->_postManager->getPosts();
             $this->_accueilManager = new AccueilManager();
