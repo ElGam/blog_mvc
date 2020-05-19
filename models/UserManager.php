@@ -16,6 +16,10 @@ class UserManager extends Model
     return $this->getUserInfo($user_id);
   }
     
+public function updateUser($email, $nom, $prenom, $password, $id){
+    return $this->updateUserInfos($email, $nom, $prenom, $password, $id);
+  }
+    
 }
 
 

@@ -12,6 +12,7 @@ class Post
   private $_chapo;
   private $_content;
   private $_date;
+  
 
   public function __construct(array $data){
     $this->hydrate($data);

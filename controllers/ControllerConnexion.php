@@ -6,6 +6,7 @@ class ControllerConnexion
 
 {
   private $_connexionManager;
+  private $_userManager;
   private $_view;
   private $_email;
   private $_password;
@@ -32,6 +33,10 @@ class ControllerConnexion
           if(isset($connexion[0]))
           {
               $_SESSION['id'] = $connexion[0]->id(); 
+              $this->_userManager = new UserManager;
+              $user = $this->_userManager->getInfos($_SESSION['id']);
+              $_SESSION['nom'] = $user[0]->nom();
+              $_SESSION['prenom'] = $user[0]->prenom();
               header("Location: Accueil");
           }
         
