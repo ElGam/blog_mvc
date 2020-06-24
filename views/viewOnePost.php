@@ -11,19 +11,19 @@
 </center>
 <div style="text-align: center;">        
     <i>
-        <?=$post->chapo()?>   
+        <?= nl2br($post->chapo()); ?>   
     </i><br>  <br>
 
     <div>
 
-        <?=$post->content()?>
+        <?= nl2br($post->content()); ?>
     </div>
 </div>    
 
 
 
 
-<section class="comment">
+<section class="comment" style="background-color:whitesmoke">
     <center><br><br>
         <h4><b>Laisser un commentaire</b></h4>
         <form method="post" action="post&id=<?= $_GET['id']?> ">
@@ -57,8 +57,11 @@
             <input type="hidden" name="post_id" value="<?= $_GET['id']; ?>">
 
             <input type="submit" name="form_button" value="OK">
-        </form><br>
+        </form><br></center>
+        </section>
 
+<section style="background-color:floralsmoke">
+    <center>
         <h4><b>Commentaires</b></h4>
         <?php
         foreach ($commentaires as $commentaire):
@@ -74,3 +77,4 @@
 
     </center>
 </section>
+
