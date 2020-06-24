@@ -66,6 +66,7 @@ class ControllerAccueil
 
 
             //VIEW   
+
             $this->_postManager = new PostManager();
             $posts = $this->_postManager->getPosts();
             $this->_accueilManager = new AccueilManager();

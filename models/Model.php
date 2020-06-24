@@ -136,6 +136,7 @@ abstract class Model
         $req->closeCursor();
     }
 
+
     //NEW COMM
     protected function newPostComm($auteur, $post_id, $contenu, $date, $auteur_id, $status)
     {
@@ -157,6 +158,7 @@ abstract class Model
             // var contiendra les données sous forme d'objets
             $var[] = new Commentaire($data);
         }
+
 
         return $var;
         $req->closeCursor();
