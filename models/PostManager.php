@@ -19,6 +19,10 @@ class PostManager extends Model
     public function getAllPostsByUserId($id){
       return $this->getAllByUser($id);
     }
+    
+    public function newComm($auteur, $post_id, $contenu, $date, $auteur_id, $status){
+      return $this->newPostComm($auteur, $post_id, $contenu, $date, $auteur_id, $status);
+    }
 
 }
 
