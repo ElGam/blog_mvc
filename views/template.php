@@ -39,6 +39,17 @@
                 {
                  ?>
                 <li><a href="User">Mon Profil</a></li>
+                
+                <?php
+                if($_SESSION['admin'] == "true")
+                {
+                ?>
+                  <li><a href="user&admin=true">Liste Users</a></li>  
+                  <li><a href="post&admin=true">Liste Posts</a></li>
+                  <li><a href="commentaire">Commentaires</a></li>
+                <?php
+                }
+    ?>
                 <li><a href="connexion&disconnect=true">Déconnexion</a></li>
                 <?php
                 }
@@ -58,11 +69,6 @@
 
 
   <?= $content ?>
-
-
-
-
-
 
 
 	<footer>
@@ -117,61 +123,6 @@
 	<script src="public/common-js/bootstrap.js"></script>
 
 	<script src="public/common-js/scripts.js"></script>
-    
-<script>
-//FONCTION DE VERIFICATION DE LA CONFORMITE DE L'EMAIL
-function isEmail(email) {
-  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  return regex.test(email);
-}
- 
-//EVENEMENT: LORS DU CLIC SUR LE BOUTON DU FORMULAIRE DE CONTACT
-$("#contactButton").click(function(){
-    //RECUPERATION DES VALEURS DES CHAMPS
-    var email = $('#email').val();
-    var nom_prenom = $('#nom_prenom').val();
-    var message = $('#message').val();
-
-        //ON VERIFIE QUE L'EMAIL EST VALIDE 
-        if(isEmail(email))
-            {
-                //L'EMAIL EST VALIDE
-                console.log('Email valide');
-
-                //ET QUE LA TAILLE DU MESSAGE EST COMPRISE ENTRE 50 ET 1500
-                if(message.length > 50 && message.length < 1500 && nom_prenom.length > 5 && nom_prenom.length < 100)
-                    {
-                        //LE MESSAGE EST VALIDE
-                        console.log("Message ou Nom et Prénom non valides !");
-                        
-                        //ENVOIE D'UNE REQUETE AJAX SUR LA PAGE PHP DE CONTACT AVEC LES VALEURS DES CHAMPS
-                        $.get("contactezNous.php?nom_prenom=" +nom_prenom+ "&email=" +email+ "&message=" +message, function(data, status){
-                        console.log("Data: " + data + "\nStatus: " + status);
-                            
-                        //SI LA PAGE RENVOIE TRUE (mail envoyé)
-                        if(data == "true")
-                        {
-                            //ON INDIQUE A L'UTILISATEUR QUE LE MAIL EST ENVOYé
-                            $('.footer-section2').html("<b>Message envoyé !</b>");
-                        }
-                        else{
-                        //SINON ON LUI INDIQUE QU'IL Y A UNE ERREUR
-                        $('#contactez-nous').html("<center><b>ERREUR</b></center>");
-                    }
-                    });
-                    
-                }
-                else{
-                    //MESSAGE NON VALIDE
-                    console.log("Taille du message ou du nom-prénom non valide !");
-                }
-            }
-            else{
-                console.log("Email non valide");
-            }
-});
-  
-    </script>
 
 </body>
 </html>

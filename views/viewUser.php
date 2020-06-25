@@ -1,6 +1,6 @@
 <br><br>
 <center>
-    <h2>Mon Profil</h2>
+    <h2><?= $title; ?></h2>
     <br>
     <br>
     
@@ -34,7 +34,32 @@
          <?php
          }
          ?>
-    
+         
+         <?php
+         if(isset($userInfos))
+         {
+        ?>
+         
+    <br><br><table border="1">
+        <tr>
+         <th>Nom</th>
+         <th>Prenom</th>
+         <th>Email</th>
+        </tr>
+         <?php
+           foreach ($userInfos as $userInfo):
+            ?>
+        <tr>
+            <td><?= $userInfo->nom(); ?></td>
+            <td><?= $userInfo->prenom(); ?></td>
+            <td><?= $userInfo->email(); ?></td>
+        </tr>
+         
+         <?php
+             endforeach;
+         }
+         ?>
+    </table>
      
   </div>
 </center>

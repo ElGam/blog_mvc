@@ -11,6 +11,7 @@ class Commentaire
   private $_auteur_id;
   private $_contenu;
   private $_date;
+  private $_post_id;
   
 
   public function __construct(array $data){
@@ -69,6 +70,12 @@ class Commentaire
       $this->_statut = $statut;
 
   }
+    
+         public function setPost_id($post_id)
+  {
+      $this->_post_id = $post_id;
+
+  }
 
   //getters
   public function id()
@@ -96,6 +103,11 @@ class Commentaire
     return $this->_date;
   }
 
+      public function post_id()
+  {
+    return $this->_post_id;
+  }
+    
   public function statut()
   {
     return $this->_statut;

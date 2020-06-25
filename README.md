@@ -1,10 +1,8 @@
 # blog-mvc
 
-##Ce code montre comment créer un blog en PHP avec l'architecture MVC
+##Ce code est rédigé dans le cadre de mon Parcours Developpeur PHP/Symfony
+##Sur OpenClassRooms
 
-###Comment l'utiliser ?
+##C'est un blog possédant une architecture MVC, développé en PHP
 
-- créer une base de données locale "blog_mvc"
-- cloner le dépôt dans votre dossier www si vous avez wamp. Si vous n'avez pas wamp, clonez le dépôt dans le dossier des projets de votre environnement de serveur local.
-- rdv dans le fichier Model.php situé dans le dossier models et modifiez les identifiants de connexion à la bdd
-- enfin ouvrez votre navigateur et lancez localhost/blog_mvc
+###Il est possible de s'y connecter, d'y poster des Posts et des Commentaires, et également de l'administrer

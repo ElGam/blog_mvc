@@ -11,6 +11,7 @@ class User
   private $_prenom;
   private $_email;
   private $_password;
+  private $_admin;
 
   public function __construct(array $data){
     $this->hydrate($data);
@@ -63,6 +64,13 @@ class User
       $this->_password = $password;
     }
   }
+    
+     public function setAdmin($admin)
+  {
+    if (is_string($admin)) {
+      $this->_admin = $admin;
+    }
+  }
 
 
   //getters
@@ -89,6 +97,11 @@ class User
       public function password()
   {
     return $this->_password;
+  }
+    
+    public function admin()
+  {
+    return $this->_admin;
   }
     
  

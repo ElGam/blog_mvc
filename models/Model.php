@@ -88,9 +88,46 @@ abstract class Model
 
         return $var;
         $req->closeCursor();
-
-
     }
+    
+    
+        protected function getAllUsersInfos(){
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("SELECT * FROM users");
+        $req->execute();
+
+        //on crée la variable data qui
+        //va cobntenir les données
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            // var contiendra les données sous forme d'objets
+            $var[] = new User($data);
+        }
+
+        return $var;
+        $req->closeCursor();
+    }
+    
+    
+            protected function getAllPostsInfos(){
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("SELECT * FROM posts");
+        $req->execute();
+
+        //on crée la variable data qui
+        //va cobntenir les données
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            // var contiendra les données sous forme d'objets
+            $var[] = new Post($data);
+        }
+
+        return $var;
+        $req->closeCursor();
+    }
+    
+    
+    
 
     //VERIFICATION DE LA CONNEXION
     protected function checkConnexion($email, $password)
@@ -136,7 +173,6 @@ abstract class Model
         $req->closeCursor();
     }
 
-
     //NEW COMM
     protected function newPostComm($auteur, $post_id, $contenu, $date, $auteur_id, $status)
     {
@@ -152,18 +188,76 @@ abstract class Model
     {
         $this->getBdd();
         $var = [];
-        $req = self::$_bdd->prepare("SELECT * FROM commentaires WHERE post_id='".$id."'");
+        $req = self::$_bdd->prepare("SELECT * FROM commentaires WHERE post_id='".$id."' AND statut='Valide'");
         $req->execute();
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             // var contiendra les données sous forme d'objets
             $var[] = new Commentaire($data);
         }
 
-
         return $var;
         $req->closeCursor();
     }
 
+    
+        protected function getAllCommToValidate()
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("SELECT * FROM commentaires WHERE statut='En Attente'");
+        $req->execute();
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            // var contiendra les données sous forme d'objets
+            $var[] = new Commentaire($data);
+        }
+
+        return $var;
+        $req->closeCursor();
+    }
+    
+    
+    protected function setCommValid($id)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("UPDATE commentaires SET statut='Valide' WHERE id='".$id."'");
+        $req->execute();
+        return "true";
+        $req->closeCursor();
+    }
+    
+    protected function eraseComm($id)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("DELETE FROM commentaires WHERE id='".$id."'");
+        $req->execute();
+        return "true";
+        $req->closeCursor();
+    }
+    
+    protected function erasePost($id)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("DELETE FROM posts WHERE id='".$id."'");
+        $req->execute();
+        return "true";
+        $req->closeCursor();
+    }
+    
+    
+    protected function createPost($title, $chapo, $content, $date, $auteur_id, $auteur)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("INSERT INTO posts (title, chapo, content, date, author_id, author) VALUES ('".$title."', '".$chapo."', '".$content."', '".$date."', '".$auteur_id."', '".$auteur."');");
+        
+        $req->execute();
+        return "true";
+        $req->closeCursor();
+    }
+    
 }
 
 ?>

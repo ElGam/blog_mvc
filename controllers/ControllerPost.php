@@ -2,7 +2,6 @@
 require_once 'views/View.php';
 
 class ControllerPost
-
 {
     private $_postManager;
     private $_view;
@@ -11,7 +10,13 @@ class ControllerPost
     public function __construct()
     {
         if (!isset($_GET['id']) || isset($url) && count($url) < 1) {
-            throw new \Exception("Page Introuvable");
+            if(isset($_GET['admin']) && $_SESSION['admin'] == "true")
+            {
+                $this->listPost();
+            }else
+            {
+                throw new \Exception("Page Introuvable");
+            }
         }
         else{
             $this->post();
@@ -20,21 +25,38 @@ class ControllerPost
 
     private function post()
     {
-
+        //AFFICHAGE D'UN POST SEUL
         $this->_commentaireManager = new CommentaireManager;
         $this->_postManager = new PostManager;
 
+        //SI : POSTER UN COMMENTAIRE
         if(isset($_POST['newComm']))
         {
             $this->_commentaireManager->newComm($_POST['auteur'], $_POST['post_id'], $_POST['contenu'], $_POST['date'], $_POST['auteur_id'], 'En Attente');
         }
 
+        //RECUPERATION ET AFFICHAGE DU POST ET DE SES COMMENTAIRES
         $commentaires = $this->_commentaireManager->getComm($_GET['id']);
         $post = $this->_postManager->getPost($_GET['id']);
         $this->_view = new View('OnePost');
         $this->_view->generate(array('post' => $post, 'commentaires' => $commentaires));
+    }
 
+
+    private function listPost()
+    {
+        //LISTE DES POSTS : ADMINS
+        $this->_postManager = new postManager;
+
+        //SI : SUPPRESSION D'UN POST
+        if(isset($_GET['id_del']) && $_GET['del'] == 1)
+        {
+            $this->_postManager->deleteAPost($_GET['id_del']);
+        }
+
+        $postInfos = $this->_postManager->getAllPostsInfo();
+        $this->_view = new View('Post');
+        $this->_view->generate(array('postInfos' => $postInfos, 'form_msg' => 'Liste Posts', 'form' => '0', 'title' => 'Espace Admin')); 
     }
 }
-
 ?>
