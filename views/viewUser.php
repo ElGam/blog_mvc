@@ -45,6 +45,7 @@
          <th>Nom</th>
          <th>Prenom</th>
          <th>Email</th>
+        <th>Supprimer</th>
         </tr>
          <?php
            foreach ($userInfos as $userInfo):
@@ -53,6 +54,7 @@
             <td><?= $userInfo->nom(); ?></td>
             <td><?= $userInfo->prenom(); ?></td>
             <td><?= $userInfo->email(); ?></td>
+            <td><a href="user&id_del=<?= $userInfo->id(); ?>&del=1&admin=true">Supprimer</a></td>
         </tr>
          
          <?php

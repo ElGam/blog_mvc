@@ -101,6 +101,11 @@ class ControllerUser
     private function listUser()
     {
         $this->_userManager = new UserManager;
+        
+        if(isset($_GET['id_del']) && $_GET['del'] == 1)
+        {
+            $this->_userManager->deleteAUser($_GET['id_del']);
+        }
         $userInfos = $this->_userManager->getAllUsersInfo();
         $this->_view = new View('User');
         $this->_view->generate(array('userInfos' => $userInfos, 'form_msg' => 'Liste Utilisateurs', 'form' => '0', 'title' => 'Espace Admin')); 

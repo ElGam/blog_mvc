@@ -24,8 +24,14 @@ public function updateUser($email, $nom, $prenom, $password, $id){
     return $this->updateUserInfos($email, $nom, $prenom, $password, $id);
   }
     
+    public function deleteAUser($id)
+    {
+        return $this->eraseUser($id);
+    }
+    
 }
 
+ 
 
 
  ?>
