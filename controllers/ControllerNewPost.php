@@ -8,10 +8,10 @@ class ControllerNewPost
 
     public function __construct()
     {
-        if (isset($url) && count($url) < 1 || !isset($_SESSION['id'])) {
+        if (isset($url) && count($url) < 1 || $_SESSION['redacteur'] != "true") {
             throw new \Exception("Page Introuvable");
         }
-        else{
+        else if($_SESSION['redacteur'] == "true"){
             $this->newPost();
         }
     }

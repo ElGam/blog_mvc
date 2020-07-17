@@ -45,11 +45,19 @@
                 {
                 ?>
                   <li><a href="user&admin=true">Liste Users</a></li>  
-                  <li><a href="post&admin=true">Liste Posts</a></li>
                   <li><a href="commentaire">Commentaires</a></li>
                 <?php
                 }
     ?>
+                <?php
+                if($_SESSION['redacteur'] == "true")
+                {
+                ?>
+                <li><a href="newPost">Nouveau Post</a></li>
+                <li><a href="post&admin=true">Liste Posts</a></li>
+                <?php  
+                }
+                ?>
                 <li><a href="connexion&disconnect=true">Déconnexion</a></li>
                 <?php
                 }

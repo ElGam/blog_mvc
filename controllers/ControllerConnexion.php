@@ -39,6 +39,7 @@ class ControllerConnexion
                 $_SESSION['nom'] = $user[0]->nom();
                 $_SESSION['prenom'] = $user[0]->prenom();
                 $_SESSION['admin'] = $user[0]->admin();
+                $_SESSION['redacteur'] = $user[0]->redacteur();
                 header("Location: Accueil");
             }
             //SI: IDENTIFIANTS KO
