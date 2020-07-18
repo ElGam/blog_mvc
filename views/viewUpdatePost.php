@@ -44,7 +44,7 @@
                            <input type="hidden" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                            <input type="hidden" name="updatePost" value="true">
 
-                    <input type="submit" value="OK">
+                           <input type="submit" value="OK">
                            <?php
     
 }
