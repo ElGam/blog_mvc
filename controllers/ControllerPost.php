@@ -9,18 +9,22 @@ class ControllerPost
 
     public function __construct()
     {
-        if (!isset($_GET['id']) || isset($url) && count($url) < 1) {
-            if(isset($_GET['admin']) && $_SESSION['admin'] == "true")
+            if(isset($_GET['admin']) && $_SESSION['redacteur'] == "true")
             {
                 $this->listPost();
-            }else
+            }
+            else if(isset($_GET['update']) && $_SESSION['redacteur'] == "true")
+            {
+                $this->updatePost();
+            }
+            else if(isset($_GET['view']))
+            {
+                $this->post();
+            }
+            else
             {
                 throw new \Exception("Page Introuvable");
             }
-        }
-        else{
-            $this->post();
-        }
     }
 
     private function post()
@@ -58,5 +62,33 @@ class ControllerPost
         $this->_view = new View('Post');
         $this->_view->generate(array('postInfos' => $postInfos, 'form_msg' => 'Liste Posts', 'form' => '0', 'title' => 'Espace Admin')); 
     }
+    
+    private function updatePost()
+    {
+        //AFFICHAGE D'UN POST SEUL
+        //$this->_commentaireManager = new CommentaireManager;
+        $this->_postManager = new PostManager;
+        $form = 1;
+        //SI : POSTER UN COMMENTAIRE
+        if(isset($_POST['updatePost']))
+        {
+            $chapo = htmlentities(htmlspecialchars($_POST['chapo']));
+            $title = htmlentities(htmlspecialchars($_POST['title']));
+            $content = htmlentities(htmlspecialchars($_POST['content']));
+            $content = str_replace("'", "&#39", $content);
+            $content = str_replace("’", "&#39", $content);
+            
+            //var_dump($content);
+            $date = htmlspecialchars($_POST['date']);
+            $this->_postManager->updatePost($_GET['id'], $chapo, $content, $date, $title);
+        }
+
+        //RECUPERATION ET AFFICHAGE DU POST ET DE SES COMMENTAIRES
+        //$commentaires = $this->_commentaireManager->getComm($_GET['id']);
+        $post = $this->_postManager->getPost($_GET['id']);
+        $this->_view = new View('UpdatePost');
+        $this->_view->generate(array('post' => $post, 'form' => $form)); 
+    }
+    
 }
 ?>

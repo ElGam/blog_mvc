@@ -30,7 +30,7 @@
 
 							<div class="blog-info">
                                 
-								<h4 class="title"><a href="post&id=<?= $post->id() ?>"><b><?= $post->title() ?></b></a></h4>
+								<h4 class="title"><a href="post&id=<?= $post->id() ?>&view=1"><b><?= $post->title() ?></b></a></h4>
 
 								<h5><?= $post->chapo() ?></h5>
                                 <br>

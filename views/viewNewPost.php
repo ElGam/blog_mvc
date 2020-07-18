@@ -22,8 +22,6 @@
                            
                            <input type="hidden" name="date" value="<?= date("Y-m-d H:i:s"); ?>">
                            <input type="hidden" name="create" value="true">
-                           
-                           <input type="password" class="form-control" placeholder="Mot de passe" name="password" style="width:40%">
 
                     <input type="submit" value="OK">
                            <?php

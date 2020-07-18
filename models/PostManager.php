@@ -36,7 +36,12 @@ class PostManager extends Model
     {
         return $this->erasePost($id);
     }
-
+    
+      public function updatePost($id, $chapo, $content, $date, $title)
+     {
+         return $this->updateAPost($id, $chapo, $content, $date, $title);
+     }
+    
 }
 
 

@@ -38,26 +38,34 @@
                 <?php if(isset($_SESSION['id']))
                 {
                  ?>
-                <li><a href="User">Mon Profil</a></li>
+                	<li><a href="User">Mon Profil</a></li>
                 
                 <?php
                 if($_SESSION['admin'] == "true")
                 {
                 ?>
-                  <li><a href="user&admin=true">Liste Users</a></li>  
-                  <li><a href="post&admin=true">Liste Posts</a></li>
-                  <li><a href="commentaire">Commentaires</a></li>
+                  	<li><a href="user&admin=true">Liste Users</a></li>  
+                  	<li><a href="commentaire">Commentaires</a></li>
                 <?php
                 }
     ?>
-                <li><a href="connexion&disconnect=true">Déconnexion</a></li>
+                <?php
+                if($_SESSION['redacteur'] == "true")
+                {
+                ?>
+                	<li><a href="newPost">Nouveau Post</a></li>
+                	<li><a href="post&admin=true">Liste Posts</a></li>
+                <?php  
+                }
+                ?>
+                	<li><a href="connexion&disconnect=true">Déconnexion</a></li>
                 <?php
                 }
                 else
                 {
                 ?>
-                <li><a href="Connexion">Connexion</a></li>
-                <li><a href="Inscription">Inscription</a></li>
+                	<li><a href="Connexion">Connexion</a></li>
+                	<li><a href="Inscription">Inscription</a></li>
                 <?php
                 }
                 ?>

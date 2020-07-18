@@ -268,6 +268,24 @@ abstract class Model
         $req->closeCursor();
     }
     
+        protected function updateAPost($id, $chapo, $content, $date, $title)
+    {
+        $this->getBdd();
+        $var = [];
+        $req = self::$_bdd->prepare("UPDATE posts SET title='".$title."', chapo='". $chapo. "', content='".$content."', date='".$date."' WHERE id=".$_GET['id']);
+        
+        if(!$req->execute())
+        {
+            var_dump($req->errorInfo());
+        }
+        //$req->execute();
+        return "true";
+        $req->closeCursor();
+    }
+    
+
+    
+    
 }
 
 ?>
