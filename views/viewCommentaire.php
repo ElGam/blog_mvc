@@ -9,17 +9,19 @@
 		<div class="container">
             <center>
                 
-              <h4><b>Commentaires</b></h4><br>
-        <table border="1">
-        <tr>
+              <h4><b>Commentaires</b></h4><br>        
+                
+                
+                  <table class="table table-striped">
+      <tr>
          <th>Auteur</th>
          <th>Contenu</th>
          <th>Date</th>
             <th>Id. Post</th>
             <th>Valider</th>
             <th>Refuser</th>
-        </tr>
-         <?php
+      </tr>
+   <?php
            foreach ($commentaires as $commentaire):
             ?>
         <tr>
@@ -35,6 +37,10 @@
              endforeach;
          ?>
                 </table>
+                
+                
+                
+                
                 </center>
 		</div><!-- container -->
 	</section><!-- section -->

@@ -4,7 +4,7 @@
     <br>
     <br>
     
-     <div class="form-group">
+     <div class="container">
          <b><i><?= $form_msg; ?></b></i><br>
          
          <?php
@@ -40,14 +40,17 @@
          {
         ?>
          
-    <br><br><table border="1">
-        <tr>
+    <br><br>
+         
+         
+           <table class="table table-striped">
+      <tr>
          <th>Nom</th>
          <th>Prenom</th>
          <th>Email</th>
         <th>Supprimer</th>
-        </tr>
-         <?php
+      </tr>
+<?php
            foreach ($userInfos as $userInfo):
             ?>
         <tr>
@@ -62,6 +65,9 @@
          }
          ?>
     </table>
+         
+         
+         
      
   </div>
 </center>

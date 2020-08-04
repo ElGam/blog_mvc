@@ -1,0 +1,51 @@
+- Creer la branche pour Creation POST---
+- Gerer les roles (use case)---
+
+- Codacy / correction ...
+- Créer le README / Comment installer ? git clone, composer install, ..
+  Importer la DB, alimenter un peu plus
+
+- Projet 6 / UML 
+- Nettoyage des commentaires 
+- Ajouter verification suppression commentaires/posts
+- Revoir organisation . Comment travailler plus ? Git, etc. Fournir plus corrections
+
+- Mettre en ligne (+mail)
+- 
+
+
+
+J'ai créé le role redacteur
+update creation post
+
+
+
+
+
+
+FAIRE CORRECTION(review GIT) PUIS MERGE GIT
++ APPORTER CORRECTION CODE
++ CODACY
+
+
+Readme: version Php
+
+DONE:
+- Augmenter les textarea Modif Post, Creation post
+- Réparer commentaires
+- Crypter mdp db
+- One Post: gérer erreur ID URL
+
+
+TODO:
+- Message de validation commentaire...
+- Mettre en ligne
+- Mail fonctionnel
+- Ajouter un nouveau post (Angular Ionic)-----
+- Coup de front (Admin ...)----
+- Readme--
+- Codacy
+
+done:
+-front admin post
+-

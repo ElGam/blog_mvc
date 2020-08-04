@@ -42,7 +42,7 @@ class ControllerInscription
                             //VERIFICATION DU CHAMP: MOT DE PASSE
                             if(isset($_POST['password']) && strlen($_POST['password']) > 6 && $_POST['password'] == $_POST['password_verif'])
                             {
-                                $this->_password = htmlspecialchars($_POST['password']);
+                                $this->_password = htmlspecialchars(md5($_POST['password']);
 
                                 //INSCRIPTION EN BASE DE DONNEES
                                 $this->_inscriptionManager = new InscriptionManager;

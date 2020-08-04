@@ -7,7 +7,7 @@
 
 <center>
 <section style="width:80%">
-
+    <?php if($commPosted){echo "<h4><i>(Commentaire soumis, en attente de validation !)</i></h4><br>"; }?>
     <h1><b><?=$post->title()?></b></h2>
     <h5><?=$post->author()?></h3> 
     <h6>Modifié le <?=$post->date()?></h4><br>
@@ -30,7 +30,7 @@
 <section class="comment" style="background-color:whitesmoke">
     <center><br><br>
         <h4><b>Laisser un commentaire</b></h4>
-        <form method="post" action="post&id=<?= $_GET['id']?> ">
+        <form method="post" action="post&view=1&id=<?= $_GET['id']?> ">
             <label for="email">Auteur:</label>
             <?php
     if(isset($_SESSION['id']))

@@ -26,7 +26,7 @@ class ControllerConnexion
         if(isset($_POST['email']) && isset($_POST['password'])) {
             $this->_connexionManager = new ConnexionManager;
             $this->_email = $_POST['email'];
-            $this->_password = $_POST['password'];
+            $this->_password = md5($_POST['password']);
             $connexion = $this->_connexionManager->check($this->_email, $this->_password);
 
             //SI: IDENTIFIANTS OK

@@ -67,7 +67,10 @@ class ControllerNewPost
             //CREATION DU POST
             if($form == 0)
             {
-                 
+                 $content = htmlentities(htmlspecialchars($content));
+                 $content = str_replace("'", "\'", $content);
+                 $content = str_replace("’", "\'", $content);
+                 $content = str_replace('"', '&#34', $content);
                  $this->_postManager->newPost($title, $chapo, $content, $date, $_SESSION['id'], $_SESSION['nom'] . ' ' . $_SESSION['prenom']);
                  $this->_view = new View('NewPost');
                  $this->_view->generate(array('return_msg' => $return_msg, 'form' => $form));

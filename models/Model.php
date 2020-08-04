@@ -7,7 +7,7 @@ abstract class Model
 
     //CONNEXION BDD
     private static function setBdd(){
-        self::$_bdd = new PDO('mysql:host=localhost;dbname=blog_mvc;charset=utf8', 'root', '');
+        self::$_bdd = new PDO('mysql:host=localhost;port=3308;dbname=blog_mvc;charset=utf8', 'root', '');
 
         //GESTION DES ERREURS AVEC CONSTANTES PDO
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
@@ -261,7 +261,8 @@ abstract class Model
     {
         $this->getBdd();
         $var = [];
-        $req = self::$_bdd->prepare("INSERT INTO posts (title, chapo, content, date, author_id, author) VALUES ('".$title."', '".$chapo."', '".$content."', '".$date."', '".$auteur_id."', '".$auteur."');");
+        $req = self::$_bdd->prepare("INSERT INTO posts (title, chapo, content, date, author_id, author) VALUES ('".$title."', '".$chapo."', '".$content."', '".$date."', '".$auteur_id."', '".$auteur."')");
+        //var_dump($req);
         
         $req->execute();
         return "true";

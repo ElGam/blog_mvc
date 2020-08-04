@@ -15,15 +15,15 @@
          {
         ?>
          
-    <br><br><table border="1">
-        <tr>
+    <br><br><table class="table table-striped">
+      <tr>
          <th>Nom</th>
          <th>Auteur</th>
          <th>Date</th>
          <th>Modifier</th>
          <th>Supprimer</th>
-        </tr>
-         <?php
+      </tr>
+      <?php
            foreach ($postInfos as $postInfo):
             ?>
         <tr>
@@ -39,6 +39,7 @@
          }
          ?>
     </table>
+    
      
   </div>
 </center>

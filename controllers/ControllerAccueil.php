@@ -41,9 +41,14 @@ class ControllerAccueil
                     //VERIFICATION: MESSAGE
                     if(isset($_POST['message']) && strlen($_POST['message']) > 20 && strlen($_POST['message']) < 2000)
                     {
-                        $message = htmlspecialchars($_POST['message']);
+                        $message = htmlentities($_POST['message']) . "\n\n" . $_POST["nom_prenom"]. "\n" . $_POST["email"];
 
                         //ENVOI DU MAIL
+                        $to      = 'mederick.delos@gmail.com';
+                        $subject = 'Contact Blog';
+                        $headers = 'From: ' .$_POST["nom_prenom"] . "\r\n";
+                   
+                        mail($to, $subject, $message, $headers);
                         $return_msg = "Le message a bien été envoyé !";
                     }
                     else
