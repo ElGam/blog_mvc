@@ -22,5 +22,6 @@ Base de donnée: MYSQL/MariaDB
     3. Note: Des utilisateurs et des posts exemples sont fournis dans ce lot
 3. Installation terminée
 
+### Code Codacy: ### 
 
     
