@@ -33,6 +33,7 @@ class ControllerAccueil
             if(isset($_POST['nom_prenom']) && strlen($_POST['nom_prenom']) > 5 && strlen($_POST['nom_prenom']) < 100)
             {
                 $nom_prenom = htmlspecialchars($nom_prenom); 
+                
 
                 //VERIFICATION: EMAIL
                 if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
