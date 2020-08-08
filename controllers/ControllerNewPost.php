@@ -3,6 +3,7 @@ require_once 'views/View.php';
 
 class ControllerNewPost
 {
+
     private $_postManager;
     private $_view;
 
@@ -18,28 +19,29 @@ class ControllerNewPost
 
     private function newPost()
     {
+        extract($_POST);
+        extract($_GET);
         $return_msg = "Remplissez le formulaire";
         $form = 1;
         
         //VERIFICATION DE LA SOUMISSION DU FORMULAIRE
-        if(isset($_POST['create']))
+        if(isset($create))
         {
             
             //VERIFICATION : TITRE
-            if(isset($_POST['title']) && strlen($_POST['title']) > 5 && strlen($_POST['title']) < 75)
+            if(isset($title) && strlen($title) > 5 && strlen($title) < 75)
             {
-                $title = htmlspecialchars($_POST['title']);
+                $title = htmlspecialchars($title);
                 
                 //VERIFICATION : CHAPO
-                if(isset($_POST['chapo']) && strlen($_POST['chapo']) > 20 && strlen($_POST['chapo']) < 1000)
+                if(isset($chapo) && strlen($chapo) > 20 && strlen($chapo) < 1000)
                 {
-                    $chapo = htmlspecialchars($_POST['chapo']);
+                    $chapo = htmlspecialchars($chapo);
                     
                     //VERIFICATION : CONTENU
-                    if(isset($_POST['content']) && strlen($_POST['content']) > 100 && strlen($_POST['content']) < 50000)
+                    if(isset($content) && strlen($content) > 100 && strlen($content) < 50000)
                     {
-                        $content = htmlspecialchars($_POST['content']);
-                        $date = $_POST['date'];
+                        $content = htmlspecialchars($content);
                         $return_msg = "Le nouveau post a bien été envoyé !";
                         $form = 0;
                     }

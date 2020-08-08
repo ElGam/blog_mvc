@@ -5,6 +5,7 @@ require_once 'views/View.php';
      */
 class ControllerInscription
 {
+
     private $_inscriptionManager;
     private $_view;
     private $_nom;
@@ -14,35 +15,34 @@ class ControllerInscription
 
     public function __construct()
     {
+        
         if (isset($url) && count($url) > 1) {
             throw new \Exception("Page introuvable", 1);
-
         }
         else {
-
-
+            extract($_POST);
             //FORMULAIRE DE CONTACT
-            if(isset($_POST['form_button']))
+            if(isset($form_button))
             {
                 //VERIFICATION DU CHAMP EMAIL
-                if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+                if(isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
                 {
-                    $this->_email = htmlspecialchars($_POST['email']);
+                    $this->_email = htmlspecialchars($email);
                     
                     //VERIFICATION DU CHAMP NOM
-                    if(isset($_POST['nom']) && strlen($_POST['nom']) > 2)
+                    if(isset($nom) && strlen($nom) > 2)
                     {
-                        $this->_nom = htmlspecialchars($_POST['nom']);
+                        $this->_nom = htmlspecialchars($nom);
 
                         //VERIFICATION DU CHAMP PRENOM
-                        if(isset($_POST['prenom']) && strlen($_POST['prenom']) > 2)
+                        if(isset($prenom) && strlen($prenom) > 2)
                         {
-                            $this->_prenom = $_POST['prenom'];
+                            $this->_prenom = $prenom;
 
                             //VERIFICATION DU CHAMP: MOT DE PASSE
-                            if(isset($_POST['password']) && strlen($_POST['password']) > 6 && $_POST['password'] == $_POST['password_verif'])
+                            if(isset($password) && strlen($password) > 6 && $password == $password_verif)
                             {
-                                $this->_password = htmlspecialchars(md5($_POST['password']);
+                                $this->_password = htmlspecialchars(md5($password));
 
                                 //INSCRIPTION EN BASE DE DONNEES
                                 $this->_inscriptionManager = new InscriptionManager;

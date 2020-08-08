@@ -5,13 +5,14 @@ require_once 'views/View.php';
      */
 class ControllerAccueil
 {
-    extract($_POST);
+    
     private $_accueilManager;
     private $_postManager;
     private $_view;
 
     public function __construct()
     {
+        
         if (isset($url) && count($url) > 1) {
             throw new \Exception("Page introuvable", 1);
 
@@ -25,30 +26,30 @@ class ControllerAccueil
 
     private function accueil()
     {
-
+        extract($_POST);
         //FORMULAIRE DE CONTACT ? SOUMIS
-        if(isset($_POST['form_button']))
+        if(isset($form_button))
         {
             //VERIFICATION: PRENOM
-            if(isset($_POST['nom_prenom']) && strlen($_POST['nom_prenom']) > 5 && strlen($_POST['nom_prenom']) < 100)
+            if(isset($nom_prenom) && strlen($nom_prenom) > 5 && strlen($nom_prenom) < 100)
             {
                 $nom_prenom = htmlspecialchars($nom_prenom); 
                 
 
                 //VERIFICATION: EMAIL
-                if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+                if(isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
                 {
-                    $email = htmlspecialchars($_POST['email']);
+                    $email = htmlspecialchars($email);
 
                     //VERIFICATION: MESSAGE
-                    if(isset($_POST['message']) && strlen($_POST['message']) > 20 && strlen($_POST['message']) < 2000)
+                    if(isset($message) && strlen($message) > 20 && strlen($message) < 2000)
                     {
-                        $message = htmlentities($_POST['message']) . "\n\n" . $_POST["nom_prenom"]. "\n" . $_POST["email"];
+                        $message = htmlentities($message) . "\n\n" . $nom_prenom. "\n" . $email;
 
                         //ENVOI DU MAIL
                         $to      = 'mederick.delos@gmail.com';
                         $subject = 'Contact Blog';
-                        $headers = 'From: ' .$_POST["nom_prenom"] . "\r\n";
+                        $headers = 'From: ' .$nom_prenom . "\r\n";
                    
                         mail($to, $subject, $message, $headers);
                         $return_msg = "Le message a bien été envoyé !";

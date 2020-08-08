@@ -4,6 +4,7 @@ require_once 'views/View.php';
 class ControllerUser
 
 {
+
     private $_userManager;
     private $_view;
     private $_email;
@@ -13,11 +14,12 @@ class ControllerUser
 
     public function __construct()
     {
+        if(isset($_GET['admin'])){$admin = $_GET['admin'];}
         if (isset($url) && count($url) < 1) {
             throw new \Exception("Page Introuvable");
         }
         //SI ADMIN : PEUT ACCEDER A LA LISTE DES USERS
-        else if(isset($_GET['admin']) && $_SESSION['admin'] == "true")
+        else if(isset($admin) && $_SESSION['admin'] == "true")
         {
             $this->listUser();
         }
@@ -30,28 +32,30 @@ class ControllerUser
 
     private function userPage()
     {
+        extract($_POST);
+        extract($_GET);
         //FORMULAIRE DE CONTACT
-        if(isset($_POST['form_button']))
+        if(isset($form_button))
         {
             //VERIFICATION DU CHAMP EMAIL
-            if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+            if(isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-                $this->_email = htmlspecialchars($_POST['email']);
+                $this->_email = htmlspecialchars($email);
 
                 //VERIFICATION DU CHAMP NOM
-                if(isset($_POST['nom']) && strlen($_POST['nom']) > 2)
+                if(isset($nom) && strlen($nom) > 2)
                 {
-                    $this->_nom = htmlspecialchars($_POST['nom']);
+                    $this->_nom = htmlspecialchars($nom);
 
                     //VERIFICATION DU CHAMP PRENOM
-                    if(isset($_POST['prenom']) && strlen($_POST['prenom']) > 2)
+                    if(isset($prenom) && strlen($prenom) > 2)
                     {
-                        $this->_prenom = $_POST['prenom'];
+                        $this->_prenom = $prenom;
 
                         //VERIFICATION DU CHAMP: MOT DE PASSE
-                        if(isset($_POST['password']) && strlen($_POST['password']) > 6 && $_POST['password'] == $_POST['password_verif'])
+                        if(isset($password) && strlen($password) > 6 && $password == $password_verif)
                         {
-                            $this->_password = htmlspecialchars($_POST['password']);
+                            $this->_password = htmlspecialchars($password);
 
                             //INSCRIPTION EN BASE DE DONNEES
                             $return_msg = "Vos modifications ont été validées !";
@@ -100,11 +104,12 @@ class ControllerUser
     //AFFICHAGE LISTE DES UTILISATEURS (ADMINS)
     private function listUser()
     {
+        extract($_GET);
         $this->_userManager = new UserManager;
         
-        if(isset($_GET['id_del']) && $_GET['del'] == 1)
+        if(isset($id_del) && $del == 1)
         {
-            $this->_userManager->deleteAUser($_GET['id_del']);
+            $this->_userManager->deleteAUser($id_del);
         }
         $userInfos = $this->_userManager->getAllUsersInfo();
         $this->_view = new View('User');

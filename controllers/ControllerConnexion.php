@@ -4,6 +4,7 @@ require_once 'views/View.php';
 
 class ControllerConnexion
 {
+
     private $_connexionManager;
     private $_userManager;
     private $_view;
@@ -12,21 +13,26 @@ class ControllerConnexion
 
     public function __construct()
     {
+
         if (isset($url) && count($url) < 1) {
             throw new \Exception("Page Introuvable");
         }
         else {
             $this->connexion();
+            
         }
     }
 
 
     private function connexion()
     {
-        if(isset($_POST['email']) && isset($_POST['password'])) {
+        extract($_POST);
+        extract($_GET);
+        if(isset($email) && isset($password)) {
+            var_dump("ok");
             $this->_connexionManager = new ConnexionManager;
-            $this->_email = $_POST['email'];
-            $this->_password = md5($_POST['password']);
+            $this->_email = $email;
+            $this->_password = md5($password);
             $connexion = $this->_connexionManager->check($this->_email, $this->_password);
 
             //SI: IDENTIFIANTS OK
@@ -53,7 +59,7 @@ class ControllerConnexion
             }
         }
         //DECONNEXION
-        else if(isset($_GET['disconnect']))
+        else if(isset($disconnect))
         {
             $this->deconnexion();
         }
