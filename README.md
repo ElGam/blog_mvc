@@ -1,5 +1,7 @@
 # blog-mvc
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9219fa772b9f46ff822f35d3793a5680)](https://app.codacy.com/manual/mederick.delos/blog_mvc?utm_source=github.com&utm_medium=referral&utm_content=ElGam/blog_mvc&utm_campaign=Badge_Grade_Dashboard)
+
 ##Ce code est rédigé dans le cadre de mon Parcours Developpeur PHP/Symfony
 ##Sur OpenClassRooms
 
